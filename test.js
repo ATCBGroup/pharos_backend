@@ -13,3 +13,5 @@ const data = {
 axios.post(url, {
   params: data,
 });
+
+// axios.delete("http://192.168.0.224/calendar/5");
