@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 
 // The HelloWorld
 app.get("/calendar", (req, res) => {
-  const db = new sqlite3.Database("calendar");
+  const db = new sqlite3.Database("./calendar.db");
 
   db.all("SELECT * FROM calendar", [], (err, rows) => {
     if (err) {
@@ -22,7 +22,7 @@ app.get("/calendar", (req, res) => {
 });
 
 app.get("/create", (req, res) => {
-  const db = new sqlite3.Database("calendar");
+  const db = new sqlite3.Database("./calendar.db");
   db.serialize(() => {
     db.run("CREATE TABLE calendar (id INT, name TEXT)");
     const stmt = db.prepare("INSERT INTO calendar VALUES (?, ?)");
