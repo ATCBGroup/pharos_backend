@@ -1,21 +1,17 @@
 const { default: axios } = require("axios");
 
-const getHue = async () => {
-  const url = "http://192.168.0.36/api/Y7kr555AYuqNTtSQhXBLEycwRJ7EoVx0n1tsfu7k/lights";
-  const hue = await axios.get(url);
-  console.log(hue.data);
-};
-// axios.delete("http://192.168.0.224/calendar/5");
-
-const blink = async () => {
+exports.blink = async (req, res) => {
   let color = 65535;
   const currentHour = new Date().getHours();
+  const currentMinute = new Date().getMinutes();
 
-  if (currentHour >= 18) {
+  if (currentHour >= 18 && currentMinute > 30) {
     color = 25500;
+    res.send("Apéro !");
+  } else {
+    res.send("Désolé, pas d'apero !");
   }
-  console.log(currentHour);
-  console.log(color);
+
   const lamps = [1, 2, 3, 4, 18];
 
   lamps.forEach(async (lamp) => {
@@ -57,5 +53,3 @@ const blink = async () => {
 
   await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second
 };
-
-blink();

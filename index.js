@@ -3,6 +3,7 @@ const cron = require("node-cron");
 const { initCalendar, getCalendar, postCalendar, deleteCalendar } = require("./functions/calendar");
 const { scheduleFunction } = require("./functions/schedule");
 const { getLog } = require("./functions/log");
+const { blink } = require("./functions/hue");
 
 const app = express();
 app.use(express.json());
@@ -26,6 +27,10 @@ cron.schedule("0 * * * *", () => {
   console.log("Running schedule function every hour");
   scheduleFunction();
 });
+
+// Test Hue
+
+app.get("/apero", blink);
 
 const port = 3000;
 app.listen(port, () => {
