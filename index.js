@@ -9,9 +9,9 @@ app.get("/", (req, res) => {
 
 // The HelloWorld
 app.get("/calendar", (req, res) => {
-  const db = new sqlite3.Database("./calendar.db");
+  const db = new sqlite3.Database("calendar.db");
 
-  db.all("SELECT * FROM calendar", [], (err, rows) => {
+  db.all("SELECT * FROM test", [], (err, rows) => {
     if (err) {
       throw err;
     }
@@ -19,18 +19,6 @@ app.get("/calendar", (req, res) => {
   });
 
   res.json(calendar);
-});
-
-app.get("/create", (req, res) => {
-  const db = new sqlite3.Database("./calendar.db");
-  db.serialize(() => {
-    db.run("CREATE TABLE calendar (id INT, name TEXT)");
-    const stmt = db.prepare("INSERT INTO calendar VALUES (?, ?)");
-    stmt.run(1, "Calendar 1");
-    stmt.finalize();
-  });
-  db.close();
-  res.send("Calendar created!");
 });
 
 const port = process.env.PORT || 3000;
