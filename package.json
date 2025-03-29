@@ -1,0 +1,22 @@
+{
+  "name": "pharos_backend",
+  "version": "1.0.0",
+  "description": "Backend on Raspberry Pi to control calendar on Pharos LPC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATCBGroup/pharos_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ATCBGroup/pharos_backend/issues"
+  },
+  "homepage": "https://github.com/ATCBGroup/pharos_backend#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
