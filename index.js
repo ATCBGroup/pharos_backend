@@ -27,10 +27,6 @@ cron.schedule("0 * * * *", () => {
   scheduleFunction();
 });
 
-cron.schedule("*/1 * * * *", () => {
-  console.log("Running schedule function every hour");
-  scheduleFunction();
-});
 const port = 3000;
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port} - Redirection of port 3000 with nginx`);

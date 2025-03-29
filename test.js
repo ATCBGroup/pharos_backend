@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 
 // Example of a POST request using fetch
-const url = "http://localhost:3000/calendar"; // Replace with your API endpoint
+const url = "http://192.168.0.224/calendar"; // Replace with your API endpoint
 const data = {
   nameEvent: "Les Parrains",
   description: "Description 3",
