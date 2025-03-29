@@ -67,6 +67,21 @@ app.post("/calendar", (req, res) => {
   res.status(201).json({ message: "Event added successfully!" });
 });
 
+app.delete("/calendar/:id", (req, res) => {
+  const { id } = req.params;
+
+  // Delete user from the database
+  const deleteQuery = `DELETE FROM calendar WHERE id = ?`;
+  const stmt = db.prepare(deleteQuery);
+  const result = stmt.run(id);
+
+  if (result.changes === 0) {
+    return res.status(404).json({ error: "Event not found" });
+  }
+
+  res.json({ message: "Event deleted successfully!" });
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}`);
