@@ -17,8 +17,6 @@ app.get("/calendar", (req, res) => {
     }
     res.json(rows);
   });
-
-  res.json(calendar);
 });
 
 const port = process.env.PORT || 3000;
