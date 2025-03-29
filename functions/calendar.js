@@ -3,6 +3,16 @@ const db = require("better-sqlite3")("pharos.db");
 exports.initCalendar = (req, res) => {
   // Initialize the database and create the table if it doesn't exist
 
+  const logQuery = `
+  CREATE TABLE log (
+  id INTEGER PRIMARY KEY, 
+  date STRING NOT NULL,
+  event STRING NOT NULL
+  )
+`;
+
+  db.exec(logQuery);
+
   const query = `
     CREATE TABLE calendar (
       id INTEGER PRIMARY KEY, 
