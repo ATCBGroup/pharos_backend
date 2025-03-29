@@ -3,7 +3,8 @@ const express = require("express");
 const db = require("better-sqlite3")("pharos.db");
 const app = express();
 
-// The HelloWorld
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Hello from Node.js GitHub Versions!");
 });
@@ -56,7 +57,7 @@ app.get("/calendar", (req, res) => {
 });
 
 app.post("/calendar", (req, res) => {
-  const { nameEvent, description, startDate, endDate, timeline } = req.body;
+  const { nameEvent, description, startDate, endDate, timeline } = req.body.params;
 
   // Insert new user into the database
   const insertQuery = `INSERT INTO calendar (nameEvent, description, startDate, endDate, timeline) VALUES (?, ?, ?, ?, ?)`;
