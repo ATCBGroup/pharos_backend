@@ -26,7 +26,9 @@ app.get("/write", (req, res) => {
     if (err) {
       return console.log(err.message);
     }
-    res.json({ id: this.lastID });
+    res.json({
+      message: "A row has been inserted",
+    });
   });
 });
 
