@@ -19,6 +19,17 @@ app.get("/calendar", (req, res) => {
   });
 });
 
+app.get("/write", (req, res) => {
+  const db = new sqlite3.Database("calendar.db");
+
+  db.run("INSERT INTO test (id, name) VALUES (?, ?)", ["2", "deux"], function (err) {
+    if (err) {
+      return console.log(err.message);
+    }
+    res.json({ id: this.lastID });
+  });
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}`);
