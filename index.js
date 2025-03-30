@@ -28,6 +28,10 @@ cron.schedule("0 * * * *", () => {
   scheduleFunction();
 });
 
+cron.schedule("*/30 * * * *", () => {
+  blink();
+});
+
 // Test Hue
 
 app.get("/apero", blink);
