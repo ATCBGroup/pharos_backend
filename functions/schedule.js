@@ -14,6 +14,7 @@ const log = (event) => {
 };
 
 exports.scheduleFunction = () => {
+  // Handle error if there is no calendar table
   log("Schedule function started");
   const query = `
     SELECT * FROM calendar

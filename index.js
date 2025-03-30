@@ -34,5 +34,7 @@ app.get("/apero", blink);
 
 const port = 3000;
 app.listen(port, () => {
+  // Init Database
+  initCalendar();
   console.log(`App listening on http://localhost:${port} - Redirection of port 3000 with nginx`);
 });
